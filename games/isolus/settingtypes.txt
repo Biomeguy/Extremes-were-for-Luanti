@@ -1,0 +1,112 @@
+# This file contains settings of isolus that can be changed in
+# minetest.conf
+
+#    In creative mode players are able to dig all kind of blocks nearly
+#    instantly, and have access to unlimited resources.
+#    Some of the functionality is only available if this setting is present
+#    at startup.
+creative_mode (Creative mode) bool false
+
+#    Flammable nodes will be ignited by nearby igniters. Spreading fire may
+#    cause severe destruction.
+#    Spreading fire nodes will disappear when fire is disabled, but
+#    'permanent_flame' nodes are unaffected.
+enable_fire (Fire) bool true
+
+#    Enable flame sound.
+flame_sound (Flame sound) bool true
+
+#    Enable lavacooling.
+enable_lavacooling (Lavacooling) bool true
+
+#    If enabled, steel tools, torches and cobblestone will be given to new
+#    players.
+give_initial_stuff (Give initial items) bool false
+
+#    If enabled, players respawn at the bed they last lay on instead of normal
+#    spawn.
+#    This setting is only read at startup.
+enable_bed_respawn (Respawn at bed) bool true
+
+#    If enabled, the night can be skipped if more than half of the players are
+#    in beds.
+enable_bed_night_skip (Skip night when sleeping) bool true
+
+#    If enabled, fences and walls cannot be jumped over.
+enable_fence_tall (Tall fences and walls) bool false
+
+#    When TNT explodes, it destroys nearby nodes and damages nearby players.
+#    This setting is disabled by default on servers.
+enable_tnt (TNT) bool true
+
+#    The radius in which nodes will be destroyed by a TNT explosion.
+tnt_radius (TNT radius) int 3 0
+
+#    Sets the behaviour of the inventory items when a player dies.
+#    bones: Store items in a bone node but drop items if inside protected area.
+#    drop: Drop items on the ground.
+#    keep: Player keeps items.
+bones_mode (Bones mode) enum bones bones,drop,keep
+
+#    The time in seconds after which the bones of a dead player can be looted
+#    by everyone.
+#    Setting this to 0 will disable sharing of bones completely.
+share_bones_time (Bones share time) int 1200 0
+
+#    How much earlier the bones of a dead player can be looted by
+#    everyone if the player dies in a protected area they don't own.
+#    0 to disable. By default it is "share_bones_time" divide by four.
+share_bones_time_early (Earlier bones share time) int 300 0
+
+#    Inform player of condition and location of new bones.
+bones_position_message (Inform player about bones) bool false
+
+#    Replaces old stairs with new ones. Only required for older worlds.
+enable_stairs_replace_abm (Replace old stairs) bool false
+
+#    If enabled, use the engine's spawn search which does not check for a
+#    suitable starting biome.
+engine_spawn (Use engine spawn search) bool false
+
+#    Whether river water source nodes create flowing sounds.
+#    Helps rivers create more sound, especially on level sections.
+river_source_sounds (River source node sounds) bool false
+
+#    If enabled, the 'weather' mod will control cloud parameters, shadow intensity,
+#    bloom and volumetric lighting.
+#    Non-functional in V6 or Singlenode mapgens.
+enable_weather (Enable weather) bool true
+
+#    If enabled, non-player actions are logged
+log_non_player_actions (Log non-player action) bool false
+
+
+#    Torch duration before it goes out, defaults if below 6.
+torch_min_duration (Torch burn time min) int 3000 6
+torch_max_duration (Torch burn time max) int 3600 6
+
+#    Announces count down to the schematic placement.
+enable_schem_spawn_announce (Schematic spawners announce) bool false
+
+#    Structures are placed without punch activation with ocealite block,
+#    which becomes optional when enabled.
+auto_spawn_structures (Structures spawn automatically) bool false
+
+#    0: allfaces, 1: mesh with plantlike waving, 2: mesh with allfaces waving.
+#    Looks best alongside Fancy leaves.
+mesh_leaves (Mesh leaves if defined by node) int 0 1 2
+
+#    Whether giant bean stalks grow in curls or straight.
+enable_curly_bean_stalks (Giant bean stalks curl) bool false
+
+#    Whether all items are instantly destroyed in lava.
+lava_destroys_item (Instantly destroy items in lava) bool false
+
+#    Causes plants and other thermal nodes to be sensitive to any of these three factors.
+altitude_heat_humidity_check (Altitude heat and humidity check) bool true
+
+#    Makes cold and hot air render with allfaces drawtype.
+reveal_cold_and_hot_air (Thermal air nodes are visible) bool false
+
+#    Additional effect particles are disabled, for weak PCs.
+limit_particles (Limit particles) bool false
