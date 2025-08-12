@@ -1,0 +1,125 @@
+local mod_lighting_monoid = core.get_modpath("lighting_monoid") ~= nil
+
+local default_sky = {
+	sky_data = {
+		base_color = nil,
+		type = "regular",
+		textures = nil,
+		clouds = true,
+		sky_color = {
+			day_sky = "#8cbafa",
+			day_horizon = "#9bc1f0",
+			dawn_sky = "#b4bafa",
+			dawn_horizon = "#bac1f0",
+			night_sky = "#006aff",
+			night_horizon = "#4090ff",
+			indoors = "#646464",
+			fog_tint_type = "default"
+		}
+	},
+	cloud_data = {
+		density = 0.4,
+		color = "#fff0f0e5",
+		ambient = "#000000",
+		height = 120,
+		thickness = 16,
+		speed = {x=0, z=-2}
+	},
+	sun_data = {
+		visible = true,
+		texture = "sun.png",
+		tonemap = "sun_tonemap.png",
+		sunrise = "sunrisebg.png",
+		sunrise_visible = true,
+		scale = 1
+	},
+	moon_data = {
+		visible = true,
+		texture = "moon.png",
+		tonemap = "moon_tonemap.png",
+		scale = 1
+	},
+	star_data = {
+		visible = true,
+		count = 1000,
+		star_color = "#ebebff69",
+		scale = 1
+	},
+	light_data = {
+		shadow_intensity = 0.33,
+		saturation = 1
+	}
+}
+
+local skybox = {}
+local layers = {}
+
+-- from https://stackoverflow.com/a/29133654
+-- merges two tables together
+-- if in conflict, b will override values of a
+local function merge_tables(a, b)
+	if type(a) == "table" and type(b) == "table" then
+		for k,v in pairs(b) do
+			if type(v)=="table" and type(a[k] or false)=="table" then
+				merge_tables(a[k],v)
+			else a[k]=v end
+		end
+	end
+	return a
+end
+
+local function set_skybox(pname, sky)
+	local player = core.get_player_by_name(pname)
+	if player == nil or	not player.get_stars then return end
+	player:set_sky(sky.sky_data)
+	player:set_clouds(sky.cloud_data)
+	player:set_moon(sky.moon_data)
+	player:set_sun(sky.sun_data)
+	player:set_stars(sky.star_data)
+	local lighting = {
+		shadows = { intensity = sky.light_data.shadow_intensity },
+		saturation = sky.light_data.saturation
+	}
+	if mod_lighting_monoid then
+		lighting_monoid:add_change(player, lighting, "climate_api:merged_lighting")
+		lighting_monoid:del_change(player, "lighting_monoid:base_shadow")
+	elseif player.set_lighting then
+		player:set_lighting(lighting)
+	end
+end
+
+function skybox.update(pname)
+	local p_layers = layers[pname]
+	local sky = table.copy(default_sky)
+	if p_layers == nil then p_layers = {} end
+	local numbered_layers = {}
+	for layer, values in pairs(p_layers) do
+		table.insert(numbered_layers, values)
+	end
+	table.sort(numbered_layers, function(left, right)
+		if left.priority == nil then left.priority = 1 end
+		if right.priority == nil then right.priority = 1 end
+		return left.priority < right.priority
+	end)
+	for i = 1, #numbered_layers do
+		sky = merge_tables(sky, numbered_layers[i])
+	end
+	set_skybox(pname, sky)
+end
+
+function skybox.add(pname, name, sky)
+	if layers[pname] == nil then layers[pname] = {} end
+	layers[pname][name] = sky
+end
+
+function skybox.remove(pname, name)
+	if layers[pname] == nil or layers[pname][name] == nil then return end
+	layers[pname][name] = nil
+end
+
+core.register_on_leaveplayer(function(player)
+	local pname = player:get_player_name()
+	layers[pname] = nil
+end)
+
+return skybox
