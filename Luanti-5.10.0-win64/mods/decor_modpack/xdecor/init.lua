@@ -1,0 +1,33 @@
+--local t = os.clock()
+
+xdecor = {}
+local modpath = core.get_modpath("xdecor")
+
+dofile(modpath .. "/handlers/glasscut.lua")
+dofile(modpath .. "/handlers/helpers.lua")
+dofile(modpath .. "/handlers/nodeboxes.lua")
+dofile(modpath .. "/handlers/registration.lua")
+
+dofile(modpath .. "/src/nodes.lua")
+dofile(modpath .. "/src/recipes.lua")
+
+local subpart = {
+	"chess",
+	"cooking",
+	"enchanting",
+	"hive",
+	"itemframe",
+	"mailbox",
+	"mechanisms",
+	"rope",
+	"workbench",
+}
+
+for _, name in ipairs(subpart) do
+	local enable = core.settings:get_bool("enable_xdecor_" .. name)
+	if enable or enable == nil then
+		dofile(modpath .. "/src/" .. name .. ".lua")
+	end
+end
+
+--print(string.format("[xdecor] loaded in %.2f ms", (os.clock()-t)*1000))
