@@ -1,0 +1,42 @@
+Shields -- Crafting Guide
+--------------------------
+
++---+---+---+
+| X | X | X |
++---+---+---+
+| X | X | X |
++---+---+---+
+|   | X |   |
++---+---+---+
+
+[shields:shield_wood] X = [default:wood]
+[shields:shield_cactus] X = [default:cactus]
+[shields:shield_gold] X = [default:gold_ingot]
+[shields:shield_silver] X = [default:silver_ingot]
+[shields:shield_brass] X = [default:brass_ingot]
+[shields:shield_bronze] X = [default:bronze_ingot]
+[shields:shield_copper] X = [default:copper_ingot]
+[shields:shield_chainmail] X = [xpanes:bar_flat]
+[shields:shield_steel] X = [default:steel_ingot]
+[shields:shield_mese] X = [default:mese_crystal]
+[shields:shield_diamond] X = [default:diamond]
+[shields:shield_mithril] X = [default:mithril_ingot]
+[shields:shield_crystal] X = [default:crystal_ingot]
+[shields:shield_nether] X = [nether:nether_ingot]
+
+Enhanced Shields
+----------------
+
++---+
+| S |
++---+
+| X |
++---+
+| S |
++---+
+
+[shields:shield_enhanced_wood] X = [shields:shield_wood]
+[shields:shield_enhanced_cactus] X = [shields:shield_cactus]
+
+S = [default:steel_ingot]
+
