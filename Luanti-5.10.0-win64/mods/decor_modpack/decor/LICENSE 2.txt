@@ -1,0 +1,47 @@
+
+License:
+
+Copyright (C) 2016 - VanessaE, and others
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject
+to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE X CONSORTIUM BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Except as contained in this notice, the name of the authors shall
+not be used in advertising or otherwise to promote the sale, use or
+other dealings in this Software without prior written authorization
+from the authors.
+
+Most code and all textures by Vanessa Ezekowitz.
+
+Some code copied and modified from the game's default mods (especially 
+doors) and ironzorg's flowers mod.
+
+Licenses: 
+* For the lua code, LGPL. 
+* For the door open/close sound, CC-By-SA 3.0 by Slanesh on freesound.org
+	http://freesound.org/people/Slanesh/sounds/31768/
+* For the gate open/close sound, CC0, by j1987 on freesound.org
+	http://freesound.org/people/j1987/sounds/106116/
+* For the doorbell sound, CC0 by guitarguy1985 on freesound.org
+	http://freesound.org/people/guitarguy1985/sounds/69384/
+* For the book sound, Public Domain by mckinneysound's on http://www.freesfx.co.uk/
+	http://www.freesfx.co.uk/sfx/book?p=3
+* For the phone ring, Public Domain by andyt's on http://www.freesfx.co.uk/
+	http://www.freesfx.co.uk/sfx/phone?p=5
+* For all images and everything else, WTFPL.
