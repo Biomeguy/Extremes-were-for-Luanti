@@ -1,0 +1,244 @@
+
+-- Fishing - crabman77's version
+-- Rewrited from original Fishing - Mossmanikin's version - Worm 0.0.2
+
+-- License (code & textures): 	WTFPL
+-- Contains code from: 		fishing (original), mobs
+-- Looked at code from:		my_mobs
+-- Dependencies: 			default
+
+-- WORM ITEM
+core.register_craftitem("fishing:bait_worm", {
+	description = fishing_setting.func.S("Worm"),
+	groups = { fishing_bait=1 },
+	inventory_image = "fishing_bait_worm.png",
+	on_place = function(itemstack, placer, pointd)
+		if not placer then -- can happen, e.g. if placed using core.place_node
+			return itemstack
+		end
+		local pt = pointd
+		if not core.is_protected(pt.under, placer:get_player_name()) then
+			core.add_entity({x=pt.under.x, y=pt.under.y+.6, z=pt.under.z}, "fishing:bait_worm_entity")
+			itemstack:take_item()
+		end
+		return itemstack
+	end,
+	on_drop = function(itemstack, dropper, pos)
+		core.add_entity(pos, "fishing:bait_worm_entity")
+		itemstack:take_item()
+		return itemstack
+	end,
+})
+
+-- WORM MOB
+core.register_entity("fishing:bait_worm_entity", {
+	initial_properties = {
+		hp_max = 300,
+		collisionbox = {-.18, -.18, -.18, .18, .18, .18},
+		visual = "sprite",
+		visual_size = {x=.5, y=.5},
+		textures = {"fishing_bait_worm.png", "fishing_bait_worm.png"},
+	},
+	damage_over_time = 1,
+	-- Don't punch this poor creature...
+	on_punch = function(self, puncher)
+		self.object:remove()
+	end,
+	-- ...softly take it into your hand.
+	on_rightclick = function(self, clicker)
+		if clicker:is_player() and clicker:get_inventory() then
+			clicker:get_inventory():add_item("main", "fishing:bait_worm")
+			self.object:remove()
+		end
+	end,
+	-- AI :D
+	on_step = function(self, dtime)
+		local pos = self.object:get_pos()
+		-- despawn when no player in range
+		local remove_entity = true
+		for _,player in pairs(core.get_connected_players()) do
+			local p = player:get_pos()
+			local dist = ((p.x-pos.x)^2 + (p.y-pos.y)^2 + (p.z-pos.z)^2)^0.5
+			if dist < 25 then
+				remove_entity = false
+				break
+			end
+		end
+		if remove_entity then
+			self.object:remove()
+			return
+		end
+		local n = core.get_node({x=pos.x,y=pos.y-0.3,z=pos.z})
+		-- move in world
+		local look_whats_up = function(self)
+			self.object:set_hp(self.object:get_hp()-self.damage_over_time) -- creature is getting older
+			if n.name == "air" then -- fall when in air
+				self.object:move_to({x=pos.x,y=pos.y-0.5,z=pos.z})
+				self.object:set_hp(self.object:get_hp()-75)
+
+			elseif core.get_item_group(n.name, "snappy") ~= 0 then -- fall when leaves or similar
+				self.object:move_to({x=pos.x+(0.001*(math.random(-32, 32))),y=pos.y-(0.001*(math.random(0, 64))),z=pos.z+(0.001*(math.random(-32, 32)))})
+
+			elseif string.find(n.name, "default:water") then -- sink when in water
+				self.object:move_to({x=pos.x,y=pos.y-0.25,z=pos.z})
+				self.object:set_hp(self.object:get_hp()-37)
+
+			elseif core.get_item_group(n.name, "soil") ~= 0 then
+				if core.get_item_group(core.get_node({x=pos.x,y=pos.y-0.1,z=pos.z}).name, "soil") == 0 and self.object:get_hp() > 200 then
+					self.object:set_hp(199)
+				elseif self.object:get_hp() > 200 then -- leave dirt to see whats going on
+					self.object:move_to({x=pos.x+(0.001*(math.random(-2, 2))),y=pos.y+0.003,z=pos.z+(0.001*(math.random(-2, 2)))})
+				elseif self.object:get_hp() < 199 then -- no rain here, let's get outa here
+					self.object:move_to({x=pos.x+(0.001*(math.random(-2, 2))),y=pos.y-0.001,z=pos.z+(0.001*(math.random(-2, 2)))})
+				elseif self.object:get_hp() == 0 then
+					self.object:remove()
+				end
+			else -- check if there's dirt anywhere (not finished)
+				local check_group = core.get_item_group
+				local goal_01 = check_group(core.get_node({x = pos.x + 1, y = pos.y-0.4, z = pos.z	  }).name, "soil")
+				local goal_02 = check_group(core.get_node({x = pos.x, 	  y = pos.y-0.4, z = pos.z + 1}).name, "soil")
+				local goal_03 = check_group(core.get_node({x = pos.x - 1, y = pos.y-0.4, z = pos.z	  }).name, "soil")
+				local goal_04 = check_group(core.get_node({x = pos.x, 	  y = pos.y-0.4, z = pos.z - 1}).name, "soil")
+
+				local goal_1a = check_group(core.get_node({x = pos.x + 1, y = pos.y+0.6, z = pos.z	  }).name, "soil")
+				local goal_2a = check_group(core.get_node({x = pos.x, 	  y = pos.y+0.6, z = pos.z + 1}).name, "soil")
+				local goal_3a = check_group(core.get_node({x = pos.x - 1, y = pos.y+0.6, z = pos.z	  }).name, "soil")
+				local goal_4a = check_group(core.get_node({x = pos.x, 	  y = pos.y+0.6, z = pos.z - 1}).name, "soil")
+				-- if there's dirt nearby, go there
+				if goal_01 ~= 0 or goal_1a ~= 0 then
+					self.object:move_to({x=pos.x+0.002,y=pos.y,z=pos.z+(0.001*(math.random(-2, 2)))})
+				elseif goal_02 ~= 0 or goal_2a ~= 0 then
+					self.object:move_to({x=pos.x+(0.001*(math.random(-2, 2))),y=pos.y,z=pos.z+0.002})
+				elseif goal_03 ~= 0 or goal_3a ~= 0 then
+					self.object:move_to({x=pos.x-0.002,y=pos.y,z=pos.z+(0.001*(math.random(-2, 2)))})
+				elseif goal_04 ~= 0 or goal_4a ~= 0 then
+					self.object:move_to({x=pos.x+(0.001*(math.random(-2, 2))),y=pos.y,z=pos.z-0.002})
+				else -- I'm lost, no dirt
+					self.object:move_to({x=pos.x+(0.001*(math.random(-8, 8))),y=pos.y,z=pos.z+(0.001*(math.random(-8, 8)))})
+				end
+			end
+		end
+		look_whats_up(self)
+	end,
+})
+
+core.register_craft({
+	output = "fishing:bait_worm 8",
+	recipe = {
+		{"default:dirt"},
+		{"default:dirt"}
+	}
+})
+
+-- GETTING WORMS
+--[[ get worms from digging in dirt:
+if fishing_setting.settings["new_worm_source"] == false then
+	core.register_node(":default:dirt", {
+		description = fishing_setting.func.S("Dirt"),
+		tiles = {"default_dirt.png"},
+		is_ground_content = true,
+		groups = {crumbly=3},
+		sounds = default.node_sound_dirt_defaults(),
+		after_dig_node = function (pos, oldnode, oldmetadata, digger)
+				if math.random(1, 100) <= fishing_setting.settings["worm_chance"] then
+				local tool_in_use = digger:get_wielded_item():get_name()
+				if tool_in_use == "" or tool_in_use == "default:dirt" then
+					if fishing_setting.settings["worm_is_mob"] == true then
+						core.add_entity({x = pos.x, y = pos.y+0.4, z = pos.z}, "fishing:bait_worm_entity")
+					else
+						local inv = digger:get_inventory()
+						if inv:room_for_item("main", {name="fishing:bait_worm", count=1, wear=0, metadata=""}) then
+							inv:add_item("main", {name="fishing:bait_worm", count=1, wear=0, metadata=""})
+						end
+					end
+				end
+			end
+		end,
+	})
+
+else
+	-- get worms from digging with hoes:
+	-- turns nodes with group soil=1 into soil
+	local function hoe_on_use(itemstack, user, pointd, uses)
+		local pt = pointd
+		-- check if pointing at a node
+		if not pt or pt.type ~= "node" then
+			return
+		end
+
+		local under = core.get_node(pt.under)
+		local upos = pointd.under
+
+		if core.is_protected(upos, user:get_player_name()) then
+			core.record_protection_violation(upos, user:get_player_name())
+			return
+		end
+
+		local p = {x=pt.under.x, y=pt.under.y+1, z=pt.under.z}
+		local above = core.get_node(p)
+
+		-- return if any of the nodes is not registered
+		if not core.registered_nodes[under.name]
+		or not core.registered_nodes[above.name] then
+			return
+		end
+
+		-- check if the node above the pointed thing is air
+		if above.name ~= "air" then
+			return
+		end
+
+		-- check if pointing at dirt
+		if core.get_item_group(under.name, "soil") ~= 1 then
+			return
+		end
+		-- turn the node into soil, wear out item and play sound
+		core.set_node(pt.under, {name="farming:soil"})
+		core.sound_play("default_dig_crumbly", {pos = pt.under, gain = 0.5,})
+
+		if math.random(1, 100) < fishing_setting.settings["worm_chance"] then
+			if fishing_setting.settings["worm_is_mob"] == true then
+				core.add_entity({x=pt.under.x, y=pt.under.y+0.4, z=pt.under.z}, "fishing:bait_worm_entity")
+			else
+				local inv = user:get_inventory()
+				if inv:room_for_item("main", {name="fishing:bait_worm", count=1, wear=0, metadata=""}) then
+					inv:add_item("main", {name="fishing:bait_worm", count=1, wear=0, metadata=""})
+				end
+			end
+		end
+		if not core.setting_getbool("creative_mode") then
+			local tool_name = itemstack:get_name()
+			itemstack:add_wear(65535/(uses-1))
+			if itemstack:get_wear() == 0 and core.get_modpath("invtweak") then
+				local index = user:get_wield_index()
+				core.sound_play("invtweak_tool_break", {pos = user:get_pos(), gain = 0.9, max_hear_distance = 5})
+				core.after(0.20, refill, user, tool_name, index)
+			end
+		end
+		return itemstack
+	end
+
+
+	-- didn't change the hoes, just here because hoe_on_use is local
+	core.register_tool(":farming:hoe_wood", {
+		description = fishing_setting.func.S("Wooden Hoe"),
+		inventory_image = "farming_tool_woodhoe.png",
+		on_use = function(itemstack, user, pointd)
+			return hoe_on_use(itemstack, user, pointd, 30)
+		end,
+	})
+	core.register_tool(":farming:hoe_stone", {
+		description = fishing_setting.func.S("Stone Hoe"),
+		inventory_image = "farming_tool_stonehoe.png",
+		on_use = function(itemstack, user, pointd)
+			return hoe_on_use(itemstack, user, pointd, 90)
+		end,
+	})
+	core.register_tool(":farming:hoe_steel", {
+		description = fishing_setting.func.S("Steel Hoe"),
+		inventory_image = "farming_tool_steelhoe.png",
+		on_use = function(itemstack, user, pointd)
+			return hoe_on_use(itemstack, user, pointd, 200)
+		end,
+	})
+end]]
