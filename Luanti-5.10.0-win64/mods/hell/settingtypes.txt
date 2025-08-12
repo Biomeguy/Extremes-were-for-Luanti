@@ -1,0 +1,23 @@
+#    If enabled, regular players which are in hell can leave it only with
+#    a hell portal and other ways of teleportation, e.g. the /spawn
+#    chatcommand, are blocked. Similarly, hell can only be entered with a
+#    portal.
+#    This forces the players to investigate the hell and build a portal with
+#    hellish effort to go back to their home in the overworld.
+#    It is recommended to disable this setting in creative mode or if damage is
+#    disabled.
+hell.trap_players (Trap players) bool true
+
+#    If enabled, show log messages in the chat and not only in debug.txt
+hell.log_to_chat (Log messages to chat) bool false
+
+#    Specify how much text is printed for debugging purposes
+#    0: Disabled
+#    1: A bit of information
+#    2: Acceptable amount of information
+#    3: Lots of text
+hell.log_level (Log level) int 2 0 3
+
+#    If disabled, players cannot view the hell guide with /hell_help
+#    in the overworld.
+hell.overworld_help (Overworld help) bool true
