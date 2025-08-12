@@ -1,0 +1,17 @@
+
+ethereal.cavedirt (Caves cut through dirt) bool true
+
+[Set following to 1 to enable biome/decoration or 0 to disable]
+ethereal.glacier (Icesheet firethorn shrubs and igloolics) int 1
+ethereal.bamboo (Bamboo and sakura trees with bushes and grass) int 1
+ethereal.alpine (Taiga mountain peaks with healing trees) int 1
+ethereal.snowy (Tundra beach and Taiga snowy grass) int 1
+ethereal.frost (Blue moss with frost trees and frost grass) int 1
+ethereal.grassy (Green grass with many plants and flowers) int 1
+ethereal.junglee (Rainforest redwood trees and vines) int 1
+ethereal.grove (Banana groves with grass and ferns) int 1
+ethereal.scorched (Dry dirt with scorched trees) int 1
+ethereal.fiery (Red grass with lava craters) int 1
+ethereal.swamp (Vines on trees, willow trees, mushrooms and lilies) int 1
+ethereal.sealife (Enable sponge spawning) int 1
+ethereal.reefs (Enable more coral reefs) int 1

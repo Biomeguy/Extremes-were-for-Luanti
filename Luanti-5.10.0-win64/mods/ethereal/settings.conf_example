@@ -1,0 +1,20 @@
+
+-- Ethereal Settings can be changed here and kept even after the mod
+-- has been updated
+
+ethereal.cavedirt = true -- caves chop through dirt when true
+
+-- Set following to 1 to enable biome/decoration or 0 to disable
+ethereal.glacier	= 1 -- Icesheet firethorn shrubs and igloolics
+ethereal.bamboo		= 1 -- Bamboo and sakura trees with bushes and grass
+ethereal.alpine		= 1 -- Taiga mountain peaks with healing trees
+ethereal.snowy		= 1 -- Tundra beach and Taiga snowy grass
+ethereal.frost		= 1 -- Blue moss with frost trees and frost grass
+ethereal.grassy		= 1 -- Green grass with many plants and flowers
+ethereal.junglee	= 1 -- Rainforest redwood trees and vines
+ethereal.grove		= 1 -- Banana groves with grass and ferns
+ethereal.scorched	= 1 -- Dry dirt with scorched trees
+ethereal.fiery		= 1 -- Red grass with lava craters
+ethereal.swamp		= 1 -- Vines on trees, willow trees, mushrooms and lilies
+ethereal.sealife	= 1 -- Enable sponge spawning
+ethereal.reefs		= 1 -- Enable more coral reefs
