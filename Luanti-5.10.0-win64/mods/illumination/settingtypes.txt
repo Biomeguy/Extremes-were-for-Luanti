@@ -1,0 +1,2 @@
+# Simulates holding a light in your left hand at given hotbar slot.
+left_handed_light_at (Left handed light slot at) int 0 1 8
