@@ -1,0 +1,1 @@
+-- Only a detectable texturepack for Isolus

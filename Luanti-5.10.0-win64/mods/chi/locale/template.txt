@@ -1,0 +1,3 @@
+# textdomain:chi
+Chi=
+Chi: @1/@2=
