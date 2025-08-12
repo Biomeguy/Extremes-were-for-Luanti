@@ -1,0 +1,1 @@
+-- Actual code, model and textures are in Isolus mod: beds
