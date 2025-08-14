@@ -1,0 +1,11 @@
+# Scary sounds are randomly played sometimes piling on each other.
+scary_ambience (Scary ambience) bool true
+
+# Darkens your hud and tweaks the day night cycle to a permanent dawn look.
+darkness (Darkness) bool true
+
+# Darkens the sky (if Darkness is enabled).
+dark_sky (Darken the sky) bool true
+
+# When possessed your hud is marked and you'll explode (if Darkness is enabled).
+possession (You might get possessed) bool true
