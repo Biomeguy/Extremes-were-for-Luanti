@@ -1,0 +1,66 @@
+
+mobs:register_mob("mobs_loz:midna", {
+	type = "npc",
+	passive = false,
+	attack_monsters = true,
+	attack_npcs = false,
+	owner_loyal = true,
+	damage = 4,
+	reach = 5,
+	attack_type = "dogfight",
+	hp_min = 50,
+	hp_max = 85,
+	armor = 80,
+	order = "follow",
+	collisionbox = {-.3, 0, -.3, .3, .8, .3},
+	visual = "mesh",
+	mesh = "leever.b3d",
+	textures = {{"midna1.png"}, {"midna2.png"}},
+	blood_texture = "midna_particle1.png",
+	makes_footstep_sound = false,
+	view_range = 10,
+	glow = 9,
+	walk_velocity = 1,
+	run_velocity = 6,
+	jump = true,
+	jump_height = 1,
+	fall_damage = 0,
+	fall_speed = -.7,
+	stepheight = 1.5,
+	water_damage = 0,
+	lava_damage = 1,
+	light_damage = 0,
+	fly = true,
+	fly_in = {"air", "default:water_source", "default:water_flowing"},
+	animation = {
+		speed_normal = 16,
+		speed_run = 17,
+		stand_start = 0,
+		stand_end = 17,
+		stand_loop = true,
+		fly_start = 0,
+		fly_end = 17,
+		fly_loop = true,
+		run_start = 0,
+		run_end = 17,
+		run_loop = true,
+	},
+	do_custom = function(self, dtime)
+		if math.random(1,4) ~= 1 then return end
+		local pos = self.object:get_pos()
+	core.add_particle({
+		pos = {x=pos.x+math.random(-1,1), y=pos.y+math.random(0,1), z=pos.z+math.random(-1,1)},
+        velocity = {x = math.random(-1,1)/10, y = .4, z = math.random(-1,1)/10},
+        acceleration = {x = math.random(-1,1)/10, y=.5, z = math.random(-1,1)/10},
+        expirationtime = .8,
+        size = math.random(5, 20)/10,
+		collisiondetection = true,
+		collisionremoval = true,
+		vertical = true,
+		texture = "midna_particle"..math.random(1,3)..".png",
+		glow = 5
+	})
+	end,
+})
+
+mobs:register_egg("mobs_loz:midna", "Midna", "midna1.png", 1)
