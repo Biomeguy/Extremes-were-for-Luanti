@@ -1,0 +1,9 @@
+# Mobs-Multiplier: multiplier defining the spawn abundance for the mobs:
+# 0 = spawn disabled
+# a number between 0 and 1000 = less then default
+# 1000 = default
+# more than 1000 = suicide is not the fastest way to die
+multimobs (Multimobs) int 1000
+
+# Spiders
+spiders_litter_web (Spiders casually litter web) bool true

@@ -1,0 +1,6 @@
+ - Overhauled all.
+ 
+v3.02 (26th Jul 2020):
+ - Tweaked and tidied code
+ - Fixed bugs and used latest mobs redo api functions
+ - Changed spawning to use new luanti 5.x dirt types
