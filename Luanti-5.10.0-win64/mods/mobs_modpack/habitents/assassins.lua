@@ -1,0 +1,141 @@
+
+mobs:register_mob("habitents:assassin1", {
+	type = "monster",
+	damage = 4,
+	attack_type = "dogfight",
+	attack_monsters = true,
+	group_attack = true,
+	attack_animals = true,
+	pathfinding = 2,
+	hp_min = 20,
+	hp_max = 65,
+	extra_energy = {10, 65},
+	armor = 150,
+	collisionbox = {-.3, 0, -.3, .3, 1.7, .3},
+	visual = "mesh",
+	mesh = "character.b3d",
+	textures = {
+		"hbarbarian.png",
+	},
+	visual_size = {x=1, y=1},
+	makes_footstep_sound = true,
+	sounds = {
+		war_cry = "mobs_barbarian_yell2",
+		death = "mobs_barbarian_death",
+		attack = "default_punch2",
+	},
+	walk_velocity = 2,
+	run_velocity = 4,
+	jump = true,
+	water_damage = 1,
+	lava_damage = 5,
+	light_damage = 0,
+	view_range = 10,
+	animation = {
+		speed_normal = 30,
+		speed_run = 30,
+		stand_start = 0,
+		stand_end = 79,
+		walk_start = 168,
+		walk_end = 187,
+		run_start = 168,
+		run_end = 187,
+		punch_start = 189,
+		punch_end = 198
+	},
+})
+
+mobs:register_egg("habitents:assassin1", "Assassin 1", "barbarian.png", 1)
+
+mobs:register_mob("habitents:assassin2", {
+	type = "monster",
+	damage = 4,
+	attack_type = "dogfight",
+	attack_monsters = true,
+	group_attack = true,
+	attack_animals = true,
+	pathfinding = 2,
+	hp_min = 20,
+	hp_max = 65,
+	extra_energy = {10, 65},
+	armor = 150,
+	collisionbox = {-.3, 0, -.3, .3, 1.7, .3},
+	visual = "mesh",
+	mesh = "character.b3d",
+	textures = {
+		"hbarbarian1.png",
+	},
+	visual_size = {x=1, y=1},
+	makes_footstep_sound = true,
+	sounds = {
+		war_cry = "mobs_barbarian_yell1",
+		death = "mobs_barbarian_death",
+		attack = "default_punch3",
+	},
+	walk_velocity = 2,
+	run_velocity = 4,
+	jump = true,
+	water_damage = 1,
+	lava_damage = 5,
+	light_damage = 0,
+	view_range = 10,
+	animation = {
+		speed_normal = 30,
+		speed_run = 30,
+		stand_start = 0,
+		stand_end = 79,
+		walk_start = 168,
+		walk_end = 187,
+		run_start = 168,
+		run_end = 187,
+		punch_start = 189,
+		punch_end = 198
+	},
+})
+
+mobs:register_egg("habitents:assassin2", "Assassin 2", "mobs_barbarian1.png", 1)
+
+mobs:register_mob("habitents:assassin3", {
+	type = "monster",
+	damage = 4,
+	attack_type = "dogfight",
+	attack_monsters = true,
+	group_attack = true,
+	attack_animals = true,
+	hp_min = 20,
+	hp_max = 45,
+	extra_energy = {10, 65},
+	armor = 150,
+	collisionbox = {-.3, 0, -.3, .3, 1.7, .3},
+	visual = "mesh",
+	mesh = "character.b3d",
+	textures = {
+		"hbarbarian2.png",
+	},
+	visual_size = {x=1, y=1},
+	makes_footstep_sound = true,
+	sounds = {
+		death = "mobs_barbarian_death",
+	},
+	walk_velocity = 2,
+	run_velocity = 4,
+	jump = true,
+	water_damage = 1,
+	lava_damage = 5,
+	light_damage = 0,
+	view_range = 11,
+	animation = {
+		speed_normal = 30,
+		speed_run = 30,
+		stand_start = 0,
+		stand_end = 79,
+		walk_start = 168,
+		walk_end = 187,
+		run_start = 168,
+		run_end = 187,
+		punch_start = 189,
+		punch_end = 198
+	},
+})
+
+mobs:register_egg("habitents:assassin3", "Assassin 3", "mobs_barbarian2.png", 1)
