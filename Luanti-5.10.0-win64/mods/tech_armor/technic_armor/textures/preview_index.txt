@@ -1,0 +1,11 @@
+technic_armor/textures/technic_armor_helmet_tin.png:head
+technic_armor/textures/technic_armor_chestplate_tin.png:torso
+technic_armor/textures/technic_armor_leggings_tin.png:legs
+technic_armor/textures/technic_armor_boots_tin.png:feet
+technic_armor/textures/technic_armor_shield_tin.png:shield
+
+technic_armor/textures/technic_armor_helmet_lead.png:head
+technic_armor/textures/technic_armor_chestplate_lead.png:torso
+technic_armor/textures/technic_armor_leggings_lead.png:legs
+technic_armor/textures/technic_armor_boots_lead.png:feet
+technic_armor/textures/technic_armor_shield_lead.png:shield
