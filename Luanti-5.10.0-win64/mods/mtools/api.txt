@@ -1,0 +1,18 @@
+
+API
+
+1| Settings
+brewing.settings.donut_eat_hp (7 by default)
+brewing.settings.freeze_hit_points (5 by default)
+brewing.settings.freeze_time (3.0 by default)
+brewing.settings.health_amulet_heal_points (2 by default)
+brewing.settings.health_amulet_power_level (15 by default)
+brewing.settings.heart_amulet_hp_inc_by (5 by default)
+brewing.settings.chi_fay_cake = tonumber(settings:get("chi_fay_cake")) (30 by default)
+brewing.settings.chi_magic_donut = tonumber(settings:get("chi_magic_donut")) (20 by default)
+brewing.settings.chi_magic_wand = tonumber(settings:get("chi_magic_wand")) (30 by default)
+brewing.settings.chi_nymph_salad = tonumber(settings:get("chi_nymph_salad")) (15 by default)
+brewing.settings.star_blue_amulet_speedup (1.05 by default)
+
+2| Magic Effects
+brewing.engine.effects.freeze(pointd, user)
