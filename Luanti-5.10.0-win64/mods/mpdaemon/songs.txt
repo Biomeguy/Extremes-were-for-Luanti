@@ -1,0 +1,50 @@
+#File Name		Time	Gain	Title
+StrangelyBeautifulShort	3:01	0.7	Strangely Beautyful
+AvalonShort		2:58	1.4	Avalon
+eastern_feeling		3:51	1.0	Eastern Feeling
+EtherealShort		3:04	0.7	Ethereal
+FarawayShort		3:05	0.7	Faraway
+dark_ambiance		0:43	0.7	Dark by Jordach
+mm_dark				1:45	1.0	Dark by yd
+jukebox_1			1:51	1.0	cheesepuff
+jukebox_2			0:24	0.7	geerterig
+jukebox_3			0:33	0.8	rap2h
+jukebox_4			0:22	0.8	keffstay
+jukebox_5			0:16	0.7	usedtobe
+jukebox_6			0:25	0.8	zagi2
+mcl_jukebox_track_1		4:48	1.0	The Evil Sister (Jordach's Mix) by SoundHelix
+mcl_jukebox_track_2		3:17	1.0	The Energetic Rat (Jordach's Mix) by SoundHelix
+mcl_jukebox_track_4		4:31	1.0	Minetest by Jordach
+mcl_jukebox_track_5		2:54	1.0	Credit Roll (Jordach's HD Mix) by Junichi Masuda
+mcl_jukebox_track_6		3:56	1.0	Winter Feeling by Tom Peter
+mcl_jukebox_track_7		2:05	1.0	Synthgroove (Jordach's Mix) by HeroOfTheWinds
+mcl_jukebox_track_8		10:43	1.0	The Clueless Frog (Jordach's Mix) by SoundHelix
+mcl_jukebox_track_9		1:20	1.0	Moonsong (Jordach's Mix) by HeroOfTheWinds
+mm_light			1:20	0.7	Light by Écrivain
+bensound_deepblue	4:48	1.0	Deep Blue
+bensound_ofeliasdream	4:59	1.0	Ofelia's Dream
+bensound_slowmotion	3:26	1.0	Slowmotion
+rainymemory		2:10	1.0	Rainy Memory
+anonnp4014		2:30	1.6	Yawning Lion
+calm2	3:54	0.7	Calm2
+calm4	8:10	0.7	Calm4
+calm5	2:40	0.7	Calm5
+calm3	4:16	0.7	Steam Town v2 and extended
+calm6	3:36	0.7	Live Comp November 22 2020
+fun0	3:55	0.7	fun0
+calm1	2:45	0.7	calm1
+calm7	3:28	0.7	stupiddumbstupiddraft by Snowfire
+calm8	3:05	0.7	Sega Saturn by Vizil
+calm9	2:56	0.7	foggy by aeiter
+calm10	2:56	0.7	habit by aeiter
+calm11	4:14	0.7	Falling by Kitty Jamz
+calm12	1:12	0.7	insertrandomdraftname by Snowfire
+calm13	0:56	0.7	First try at Hip-Hop by Vizil
+calm14	1:43	0.7	anotherlittlequickdraftthing by Snowfire
+calm15	0:55	0.7	littlequickdraftthing by Snowfire
+calm16	5:52	0.7	I dont have a name for this yet by Kitty Jamz
+calm17	3:16	0.7	I can't fix myself I only break down by Vizil
+calm18  2:50    0.7	organic machines oblique challenge 4 by nico / sim
+calm19  4:58    0.5	i'm so so sorry by dreamweaver
+calm20  1:03    0.7 arrival by aeiter
+calm21  1:28    0.7 stressed out by aeiter
