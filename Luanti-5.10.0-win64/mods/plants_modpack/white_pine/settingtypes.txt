@@ -1,0 +1,2 @@
+# Makes white and default pines use scaled mesh without Mesh leaves enabled.
+force_poofy_pines (Forces poofy pine needles) bool false
